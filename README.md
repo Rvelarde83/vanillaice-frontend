@@ -23,7 +23,7 @@
 - JQuery
 - Express
 - Node
-- React
+- React 
 
 ## Problem Being Solved and Target Market
 Users can now store their bookmarks on this site
