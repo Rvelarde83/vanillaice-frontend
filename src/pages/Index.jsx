@@ -1,17 +1,35 @@
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams, useState } from 'react-router-dom'
 
-
-
-function Index(props){
+export default function Index(props, {createBookmark}){
     const { id } = useParams()
     let navigate = useNavigate()
     const bookmarks = props.bookmarks
     const bookmark = bookmarks.find((b) => b._id === id)
 
 
-    //Form Code
+    // state to hold formData
+    const [newForm, setNewForm] = useState({
+        title: "",
+        url: "",
+    })
 
+    // handleChange function for form
+    const handleChange = (event) => {
+        setNewForm((prevState) => ({
+            ...prevState,
+            [event.target.name]: event.target.value,
+        }))
+    }
 
+    // handle submit
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        createBookmark(newForm)
+        setNewForm({
+            title: "",
+            url: "",
+        })
+    }
 
 
     //Delete Function
@@ -40,10 +58,31 @@ function Index(props){
 
     return(
         <section>
-            {/* form */}
+            <div className='submitForm'>
+                <h3>Add a new Bookmark</h3>
+                <form onSubmit={handleSubmit}>
 
-            {/* ternary to call function to load bookmarks */}
-            {props.bookmarks ? loaded() : loading()}
+                    <input
+                    type="text"
+                    name="title"
+                    placeholder="website"
+                    value={newForm.title}
+                    onChange={handleChange}
+                    />
+                    <input
+                    type="text"
+                    name="url"
+                    placeholder="http://"
+                    value={newForm.url}
+                    onChange={handleChange}
+                    />
+                    <input type="submit" value="Add!!" />
+                </form>
+            </div>
+            <div className='list'>
+                {props.bookmarks ? loaded() : loading()}
+            </div>
         </section>
     )
+
 }
