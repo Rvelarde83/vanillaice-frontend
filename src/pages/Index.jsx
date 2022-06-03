@@ -13,6 +13,7 @@ export default function Index(props, {createBookmark}){
         url: "",
     })
 
+
     // handleChange function for form
     const handleChange = (event) => {
         setNewForm((prevState) => ({
@@ -33,9 +34,15 @@ export default function Index(props, {createBookmark}){
 
 
     //Delete Function
-    function deleteBookmark(){
+    const deleteBookmark = () => {
         props.deleteBookmark(bookmark._id)
         navigate('/')
+    }
+
+    //Update Function for Button
+    const updateBookmark = () => {
+        props.updateBookmark(bookmark._id)
+        navigate('/bookmarks/:id')
     }
 
 
@@ -46,6 +53,7 @@ export default function Index(props, {createBookmark}){
                 <Link to={bookmark.url}>
                     <h1>{bookmark.title}</h1>
                 </Link>
+                <button id='update' onClick={updateBookmark}>Edit</button>
                 <button id='delete' onClick={deleteBookmark}>x</button>
             </div>
         ))
