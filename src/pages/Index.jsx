@@ -20,9 +20,8 @@ export default function Index({ bookmark, createBookmark }) {
         event.preventDefault()
         createBookmark(newForm)
         setNewForm({
-            name: "",
-            image: "",
             title: "",
+            url: "",
         })
     }
 
