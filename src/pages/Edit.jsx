@@ -13,11 +13,11 @@ export default function Edit ({bookmark,updateBookmark}){
 
     
     const handleChange = (event) => {
-        setNewForm((prevState) => ({
-            ...prevState,
-            [event.target.name]: event.target.value,
-        }))
-    }
+        setNewForm(prevState => ({
+          ...prevState,
+          [event.target.name]: event.target.value
+        }));
+      };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -34,8 +34,8 @@ export default function Edit ({bookmark,updateBookmark}){
                 <input
                     type="text"
                     name="title"
-                    placeholder={mark.title}
                     value={newForm.title}
+                    placeholder={mark.title}
                     onChange={handleChange}
                 />
                 <input
