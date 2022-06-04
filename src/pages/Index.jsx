@@ -51,8 +51,8 @@ export default function Index(props){
     //Loaded and Loading functions
     const loaded = ()=>{
         return bookmarks.map((bookmark)=>(
-            <div key={bookmark._id}>
-                <Link to={bookmark.url}>
+            <div className='mark' key={bookmark._id}>
+                <Link to={bookmark.url} className="link">
                     <h1>{bookmark.title}</h1>
                 </Link>
                 <button id='update' onClick={(e)=>{updateBookmark(bookmark._id)}}>Edit</button>
@@ -78,6 +78,7 @@ export default function Index(props){
                     placeholder="website"
                     value={newForm.title}
                     onChange={handleChange}
+                    className="text" 
                     />
                     <input
                     type="text"
@@ -85,8 +86,9 @@ export default function Index(props){
                     placeholder="http://"
                     value={newForm.url}
                     onChange={handleChange}
+                    className="text" 
                     />
-                    <input type="submit" value="Add!!" />
+                    <input type="submit" value="Add!!" className='button' />
                 </form>
             </div>
             <div className='list'>
