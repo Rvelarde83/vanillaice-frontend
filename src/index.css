@@ -7,10 +7,17 @@
   text-align: center;
   justify-content: center;
   transition: color 0.4s, background-color 0.2s;
+  
 }
 *:hover{
-    color: rgb(240, 240, 252);
-    background-color:rgb(57, 120, 214) ;
+  color: rgb(240, 240, 252);
+  background-color:rgb(57, 120, 214) ;
+}
+
+input:focus::placeholder {
+  color: rgb(240, 240, 252);
+  transition: color 0.2s;
+
 }
 
 h1,h3{
@@ -33,6 +40,7 @@ code {
 button{
   width:30%;
 }
+
 .mark{
   display: flex;
   justify-content: space-around;
