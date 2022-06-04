@@ -7,17 +7,17 @@ export default function Edit ({bookmark,updateBookmark}){
     console.log(bookmark)
     const mark=bookmark? bookmark.find(mark => mark._id === id):""
     const [newForm, setNewForm] = useState({
-        title: "",
-        url: "",
+        title: mark.title,
+        url: mark.url,
     })
 
     
     const handleChange = (event) => {
-        setNewForm((prevState) => ({
-            ...prevState,
-            [event.target.name]: event.target.value,
-        }))
-    }
+        setNewForm(prevState => ({
+          ...prevState,
+          [event.target.name]: event.target.value
+        }));
+      };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -34,15 +34,15 @@ export default function Edit ({bookmark,updateBookmark}){
                 <input
                     type="text"
                     name="title"
+                    value={newForm.title}
                     placeholder={mark.title}
-                    value={setNewForm.title}
                     onChange={handleChange}
                 />
                 <input
                     type="text"
                     name="url"
                     placeholder={mark.url}
-                    value={setNewForm.url}
+                    value={newForm.url}
                     onChange={handleChange}
                 />
                 <input type="submit" value="Update!!" />
