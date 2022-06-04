@@ -1,11 +1,12 @@
-import { Link, useNavigate, useParams, useState } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
-export default function Index(props, {createBookmark}){
-    const { id } = useParams()
+export default function Index(props){
+    //const { id } = useParams()
     let navigate = useNavigate()
-    const bookmarks = props.bookmarks
-    const bookmark = bookmarks.find((b) => b._id === id)
-
+    const bookmarks = props.bookmark
+   // const bookmark = bookmarks ? bookmarks.find((b) => b._id === id):"";
+    const[bookmark, setBookmark]=useState();
 
     // state to hold formData
     const [newForm, setNewForm] = useState({
@@ -25,7 +26,7 @@ export default function Index(props, {createBookmark}){
     // handle submit
     const handleSubmit = (event) => {
         event.preventDefault()
-        createBookmark(newForm)
+        props.createBookmark(newForm)
         setNewForm({
             title: "",
             url: "",
@@ -34,27 +35,28 @@ export default function Index(props, {createBookmark}){
 
 
     //Delete Function
-    const deleteBookmark = () => {
-        props.deleteBookmark(bookmark._id)
+    const deleteBookmark = (id) => {
+        console.log(props.deleteBookmark)
+       props.deleteBookmark(id)
         navigate('/')
     }
 
     //Update Function for Button
-    const updateBookmark = () => {
-        props.updateBookmark(bookmark._id)
-        navigate('/bookmarks/:id')
+    const updateBookmark = (id) => {
+        //props.updateBookmark(bookmark._id)
+        navigate(`/bookmarks/${id}`)
     }
 
 
     //Loaded and Loading functions
     const loaded = ()=>{
-        return props.bookmarks.map((bookmark)=>(
+        return bookmarks.map((bookmark)=>(
             <div key={bookmark._id}>
                 <Link to={bookmark.url}>
                     <h1>{bookmark.title}</h1>
                 </Link>
-                <button id='update' onClick={updateBookmark}>Edit</button>
-                <button id='delete' onClick={deleteBookmark}>x</button>
+                <button id='update' onClick={(e)=>{updateBookmark(bookmark._id)}}>Edit</button>
+                <button id='delete' onClick={(e)=>{deleteBookmark(bookmark._id)}}>x</button>
             </div>
         ))
     }
@@ -88,7 +90,7 @@ export default function Index(props, {createBookmark}){
                 </form>
             </div>
             <div className='list'>
-                {props.bookmarks ? loaded() : loading()}
+                {bookmarks ? loaded() : loading()}
             </div>
         </section>
     )
