@@ -11,9 +11,10 @@
 | Project Name | Vanillaice|
 | Description | A website where users can store their favorite websites in a bookmark.|
 | Developers | Jonathan Pierre, Deanna Keys, Ramon Velarde, Madhumida Sanjeeviraj |
+| Live Website Frontend | https://main--soft-melomakarona-875d4b.netlify.app/ |
 | Live Website Backend | https://vanilla-ice-bookmark-backend.herokuapp.com/ |
-| Repo Backend|  git@github.com:Rvelarde83/vanillaice-backend.git |
 | Repo Frontend| https://github.com/Rvelarde83/vanillaice-frontend |
+| Repo Backend|  git@github.com:Rvelarde83/vanillaice-backend.git |
 | Trello Board |https://trello.com/b/FOxZvnkq/bookmarks |
 
 ## Technologies Used
