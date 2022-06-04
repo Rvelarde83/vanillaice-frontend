@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Link } from "react-router-dom"
+import Edit from "../pages/Edit"
 import Index from "../pages/Index"
 
 function Main() {
     const [bookmark, setBookmar] = useState(null)
-    const URL = "https://vanilla-ice-bookmark-backend.herokuapp.com/bookmarks"
+    const URL = "https://vanilla-ice-bookmark-backend.herokuapp.com/bookmarks/"
 
     const getBookmarks = async () => {
         const response = await fetch(URL)
@@ -49,12 +50,13 @@ function Main() {
     useEffect(() => {
         getBookmarks()
     }, [])
+    
 
     return (
         < main >
             <Routes>
-                <Route path="/" element={<Index bookmark={bookmark} createBookmark={createBookmark} />}></Route>
-                <Route path='/bookmarks/:id' element={<Index bookmark={bookmark} updateBookmark={updateBookmark} deleteBookmark={deleteBookmark}/>}/>
+                <Route path="/" element={<Index bookmark={bookmark} createBookmark={createBookmark} deleteBookmark={deleteBookmark} />}></Route>
+                <Route path='/bookmarks/:id' element={<Edit bookmark={bookmark} updateBookmark={updateBookmark} />}/>
             </Routes>
         </main >
     )
