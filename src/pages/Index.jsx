@@ -52,9 +52,7 @@ export default function Index(props){
     const loaded = ()=>{
         return bookmarks.map((bookmark)=>(
             <div className='mark' key={bookmark._id}>
-                <Link to={bookmark.url} className="link">
-                    <h1>{bookmark.title}</h1>
-                </Link>
+                    <a href={bookmark.url}><h1>{bookmark.title}</h1></a>
                 <button id='update' onClick={(e)=>{updateBookmark(bookmark._id)}}>Edit</button>
                 <button id='delete' onClick={(e)=>{deleteBookmark(bookmark._id)}}>x</button>
             </div>

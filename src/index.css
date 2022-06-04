@@ -1,5 +1,4 @@
 *{
-  
   background-color: rgb(240, 240, 252);
   color: rgb(57, 120, 214);
   text-decoration: none;
@@ -31,11 +30,12 @@ code {
     monospace;
 }
 button{
-  width:30%;
+  width:10%;
 }
 .mark{
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .link{
   width: 50%;
@@ -49,4 +49,8 @@ button{
   width: 25%;
   height: 50px;
 
+}
+
+a{
+  width: 20%
 }
